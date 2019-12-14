@@ -1,0 +1,24 @@
+﻿@using WebApplication2.Entities;
+@model List<Ganre>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Create new ganre", "Create")
+
+<table class="table table-striped">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@Html.ActionLink("Редактировать жанр", "Edit", new { id = @item.Id })</td>
+            <td>@Html.ActionLink("Удалить жанр", "Delete", new { id = @item.Id })</td>
+        </tr>
+
+    }
+</table>
+
+
