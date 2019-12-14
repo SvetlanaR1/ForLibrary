@@ -18,5 +18,10 @@ namespace WebApplication2.Controllers
                 return View(ganres);
             }
         }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
     }
 }
