@@ -19,6 +19,7 @@ namespace WebApplication2.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult Edit()
         {
             return View();
