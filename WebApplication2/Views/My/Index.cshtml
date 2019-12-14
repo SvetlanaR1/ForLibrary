@@ -1,40 +1,49 @@
 ﻿@using WebApplication2.Entities 
 @model List<Authors>
 
+
 @{
     ViewBag.Title = "Index";
 }
+@{
+    List<Authors> listViewBag = ViewBag.AuthorList;
+    List<Authors> listViewData = (List<Authors>)ViewData["AuthorList"];
 
-<h2>My Index page</h2>
 
-@Html.ActionLink("Create new author", "Create")
+    //dynamic x = 1;
+    //x = "qq";
+    //x = new List<Authors>();
 
-@{Html.RenderPartial("_MyPartialView", Model); }
+    @*@TempData["AuthorList"]*@
+}
+    <h2>My Index page</h2>
 
-@ViewBag.AuthorName
-@ViewData["AuthorName"]
-@TempData["AuthorName"]
-<script>
+    @Html.ActionLink("Create new author", "Create")
 
-</script>
+    @{Html.RenderPartial("_MyPartialView", Model); }
 
-<table class="table table-striped">
-    <caption>It's main view</caption>
-    <thead>
-        <tr>
-            <th>Номер записи</th>
-            <th>Имя автора</th>
-            <th>Фамилия автора</th>
-        </tr>
-    </thead>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.FirstName</td>
-            <td>@item.LastName</td>
-        </tr>
-    }
-</table>
+    <script>
+
+    </script>
+
+    <table class="table table-striped">
+        <caption>It's main view</caption>
+        <thead>
+            <tr>
+                <th>Номер записи</th>
+                <th>Имя автора</th>
+                <th>Фамилия автора</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+            </tr>
+        }
+    </table>
 

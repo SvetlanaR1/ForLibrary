@@ -20,17 +20,17 @@ namespace WebApplication2.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            using (Model1 db = new Model1())
-            {
-                ViewBag.AuthorList = new SelectList(db.Authors.ToList(), "Id", "LastName");
-                ViewBag.GanreList = new SelectList(db.Ganres.ToList(), "Id", "Name");
-            }
-            return View();
+        //[HttpGet]
+        //public ActionResult Create()
+        //{
+        //    using (Model1 db = new Model1())
+        //    {
+        //        ViewBag.AuthorList = new SelectList(db.Authors.ToList(), "Id", "LastName");
+        //        ViewBag.GanreList = new SelectList(db.Ganres.ToList(), "Id", "Name");
+        //    }
+        //    return View();
             
-        }
+        //}
 
         [HttpPost]
         public ActionResult Create(Books book)
@@ -50,7 +50,23 @@ namespace WebApplication2.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            
+            using (Model1 db = new Model1())
+            {
+                ViewBag.AuthorList = new SelectList(db.Authors.ToList(), "Id", "LastName");
+                ViewBag.GanreList = new SelectList(db.Ganres.ToList(), "Id", "Name");
+
+                if (id == 0)
+                {
+                    return View();
+                }
+                else
+                { 
+                    var book = db.Books.Where(x=>x.Id == id).FirstOrDefault();
+
+                    return View(book);
+                }
+            }
         }
     }
 }
